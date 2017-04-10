@@ -74,6 +74,8 @@ print(pointdf)
 # Plot the points on a graph
 fig = plt.figure()
 ax = fig.gca(projection='3d')
-ax.plot(xpoints, ypoints, zpoints, "ro")
+xpoints = [Tx, Mx, Dx, Bx]
+ypoints = [Ty, My, Dy, By]
+zpoints = [Tz, Mz, Dz, Bz]
 ax.plot(xpoints, ypoints, zpoints)
 plt.show()
