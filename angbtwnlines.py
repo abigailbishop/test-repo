@@ -15,6 +15,7 @@ import numpy as np
 import matplotlib as mpl
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
+import pandas as pd
 
 # Set the information from GEMs
 Tx = 1.0
@@ -57,12 +58,22 @@ Oz = Bz - Dz
 O_Ang = -1 * np.degrees(np.arccos( -Oz / ( Ox**2 + Oy**2 + Oz**2 )**0.5 ))
 print("Ray's outgoing angle: ", O_Ang)
 
-# Plot the points on a graph
-fig = plt.figure()
-ax = fig.gca(projection='3d')
+# Organize datapoints
 xpoints = [Tx, Mx, Dx, Bx]
 ypoints = [Ty, My, Dy, By]
 zpoints = [Tz, Mz, Dz, Bz]
+
+# Output the Data in a Panda Dataframe
+pointindex = ['1st Point', '2nd Point', '3rd Point', '4th Point']
+pointseries = {'X Value' : pd.Series(xpoints, index=pointindex),
+               'Y Value' : pd.Series(ypoints, index=pointindex),
+               'Z Value' : pd.Series(zpoints, index=pointindex) }
+pointdf = pd.DataFrame(pointseries)
+print(pointdf)
+
+# Plot the points on a graph
+fig = plt.figure()
+ax = fig.gca(projection='3d')
 ax.plot(xpoints, ypoints, zpoints, "ro")
 ax.plot(xpoints, ypoints, zpoints)
 plt.show()
