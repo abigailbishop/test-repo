@@ -78,4 +78,5 @@ xpoints = [Tx, Mx, Dx, Bx]
 ypoints = [Ty, My, Dy, By]
 zpoints = [Tz, Mz, Dz, Bz]
 ax.plot(xpoints, ypoints, zpoints)
+ax.plot(xpoints, ypoints, zpoints, "ro")
 plt.show()
